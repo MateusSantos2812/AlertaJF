@@ -42,19 +42,7 @@ export class AlertController {
     // Botão GPS
     const btnGps = document.getElementById("btn-gps");
     if (btnGps) {
-      btnGps.addEventListener("click", () => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (pos) =>
-              this.handlePointSelected(
-                pos.coords.latitude,
-                pos.coords.longitude,
-              ),
-            () =>
-              alert("Não foi possível acessar a localização do dispositivo."),
-          );
-        }
-      });
+      btnGps.addEventListener("click", () => this.requestLocation(btnGps));
     }
 
     // Botões de Abrir/Fechar Modais
@@ -102,6 +90,44 @@ export class AlertController {
         this.refreshAlertsView(),
       );
     }
+  }
+
+  requestLocation(button) {
+    if (!window.isSecureContext) {
+      alert("A localização precisa de uma conexão segura. Abra o site pelo endereço HTTPS.");
+      return;
+    }
+    if (!navigator.geolocation) {
+      alert("Este navegador não oferece acesso à localização.");
+      return;
+    }
+
+    const originalLabel = button.textContent;
+    button.disabled = true;
+    button.textContent = "Obtendo localização…";
+    button.setAttribute("aria-busy", "true");
+    const resetButton = () => {
+      button.disabled = false;
+      button.textContent = originalLabel;
+      button.removeAttribute("aria-busy");
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resetButton();
+        this.handlePointSelected(position.coords.latitude, position.coords.longitude);
+      },
+      (error) => {
+        resetButton();
+        const messages = {
+          1: "O acesso à localização foi bloqueado. Verifique a permissão deste site no navegador e a permissão de localização do navegador nas configurações do computador.",
+          2: "O computador não conseguiu determinar sua localização. Mesmo com a permissão liberada, o serviço pode estar indisponível. Confira a localização nas configurações do sistema e tente novamente. Você também pode buscar um endereço ou selecionar um ponto no mapa.",
+          3: "A localização demorou mais de 15 segundos. Tente novamente ou use a busca de endereço e o clique no mapa.",
+        };
+        alert(messages[error.code] || "Não foi possível obter a localização. Use a busca de endereço ou selecione um ponto no mapa.");
+      },
+      { enableHighAccuracy: false, timeout: 15000, maximumAge: 60000 },
+    );
   }
 
   // MÉTODO ATUALIZADO COM GEOCODIFICAÇÃO REVERSA EM TEMPO REAL:
