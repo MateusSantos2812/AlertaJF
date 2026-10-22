@@ -1,6 +1,6 @@
-import { AlertModel } from "./models/AlertModel.js";
-import { AlertView } from "./views/AlertView.js";
-import { AlertController } from "./controllers/AlertController.js";
+import { AlertModel } from "./models/AlertModel.js?v=20261022-access2";
+import { AlertView } from "./views/AlertView.js?v=20261022-access2";
+import { AlertController } from "./controllers/AlertController.js?v=20261022-access2";
 
 document.addEventListener("DOMContentLoaded", () => {
   const welcome = document.getElementById("welcome-screen");
