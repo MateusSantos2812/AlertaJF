@@ -16,6 +16,8 @@ Não há dependências para instalar nem etapa de build. É necessária conexão
 
 ## Estrutura
 
+A tela inicial solicita nome e mostra a data de acesso conforme o dispositivo. O acesso é demonstrativo, sem senha ou autenticação. O nome permanece apenas na página aberta; **Trocar usuário** retorna à tela inicial. Os alertas salvos continuam compartilhados no mesmo navegador.
+
 ```text
 index.html
 css/style.css
