@@ -13,31 +13,6 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <section class="welcome-screen" id="welcome-screen" aria-labelledby="welcome-title">
-      <div class="welcome-intro">
-        <div class="welcome-brand">🛡️ Alerta<strong>JF</strong></div>
-        <p class="welcome-eyebrow">INFORMAÇÃO PARA PREVENIR</p>
-        <h1 id="welcome-title">Conhecer os riscos é o primeiro passo para proteger.</h1>
-        <p>Explore áreas de risco de Juiz de Fora, consulte o mapa e organize pontos de atenção em um só lugar.</p>
-        <div class="welcome-topics"><span>Mapa de riscos</span><span>Consulta por endereço</span><span>Registro de alertas</span></div>
-        <p class="welcome-source">Projeto acadêmico • Dados públicos do SISURB / Prefeitura de Juiz de Fora</p>
-      </div>
-      <div class="welcome-card">
-        <p class="welcome-eyebrow">BEM-VINDO AO ALERTAJF</p>
-        <h2>Vamos começar?</h2>
-        <p>Informe seu nome para personalizar sua visita.</p>
-        <form id="welcome-form">
-          <label for="visitor-name">Como podemos chamar você?</label>
-          <input id="visitor-name" name="name" type="text" autocomplete="given-name" maxlength="80" placeholder="Digite seu nome" required />
-          <label for="access-date">Data de acesso</label>
-          <input id="access-date" type="text" readonly />
-          <button class="btn-primary" type="submit">Acessar o sistema →</button>
-        </form>
-        <p class="welcome-note">Acesso demonstrativo, sem senha. Seu nome é usado apenas nesta página e não é enviado a um servidor.</p>
-        <p class="welcome-note">Em uma emergência, ligue para a Defesa Civil: <strong>199</strong>.</p>
-      </div>
-    </section>
-    <div id="application" hidden>
     <!-- Cabeçalho -->
     <header class="app-header">
       <div class="brand">
@@ -48,8 +23,6 @@
         </h1>
       </div>
       <div class="header-actions">
-        <span id="visitor-greeting" class="visitor-greeting"></span>
-        <button id="btn-switch-user" class="btn-link-header" type="button">Trocar usuário</button>
         <button id="btn-disclaimer" class="btn-link-header">
           ℹ️ Sobre os Dados
         </button>
@@ -267,7 +240,6 @@
       </div>
     </div>
 
-    </div>
     <!-- Bibliotecas Externas via CDN: Leaflet (Mapas) e Turf.js (Análise Espacial) -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>

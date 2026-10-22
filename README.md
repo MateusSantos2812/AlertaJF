@@ -14,12 +14,6 @@ Abra a porta 8000 no navegador. Use um servidor HTTP: abrir o `index.html` diret
 
 Não há dependências para instalar nem etapa de build. É necessária conexão com a internet para carregar Leaflet e Turf pelo unpkg, os mapas do OpenStreetMap e a busca de endereços pelo Nominatim. Os alertas são armazenados no LocalStorage do navegador, sem backend.
 
-## Tela de boas-vindas
-
-Ao abrir o site, informe um nome e selecione **Acessar o sistema**. A data de acesso é preenchida automaticamente conforme o relógio do dispositivo. O nome personaliza a saudação apenas enquanto a página estiver aberta; não é enviado a um servidor.
-
-Use **Trocar usuário** para retornar à apresentação inicial. Esse fluxo é demonstrativo, sem autenticação ou contas individuais: os alertas continuam compartilhados no mesmo navegador e não são apagados ao trocar o nome.
-
 ## Estrutura
 
 ```text
